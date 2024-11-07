@@ -76,6 +76,11 @@ header, nav, section, article, aside, footer, hgroup {
   box-sizing: border-box;
 }
 
+img-fluid {
+    width: 80px;
+    height: 80px;
+}
+
 html, body {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;

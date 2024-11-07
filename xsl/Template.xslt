@@ -36,9 +36,9 @@
 				<link rel="stylesheet" href="assets/css/owl.css"></link>
 				<link rel="stylesheet" href="assets/css/animate.css"></link>
 				<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-
+				
 				<script type="text/javascript" src="assets/js/jquery-1.11.2.min.js"></script>
-		
+				<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<!--
 		
 
@@ -181,7 +181,6 @@
 				<script src="assets/js/popup.js"></script>
 				<script src="assets/js/custom.js"></script>
 				<script type="text/javascript" src="assets/js/jquery-1.11.2.min.js"></script>
-
 
 			</body>
 
@@ -331,80 +330,83 @@
 					<p>Puedes acompañar tu comida con..</p>
 				</div>
 
-				<ul >
-					<li >
+				<ul class="nav" >
 						<xsl:for-each select="Platillos/Tipo[@Nombre = 'Bebidas']/Platillo">
-							<xsl:choose>
-								<xsl:when test="@Orden = 1">
-									<a href="#tab-{@Orden}" class="active">
-										<xsl:value-of select="@Nombre"></xsl:value-of>
-									</a>
-								</xsl:when>
-								<xsl:otherwise>
-									<a href="#tab-{@Orden}">
-										<xsl:value-of select="@Nombre"></xsl:value-of>
-									</a>
-								</xsl:otherwise>
-							</xsl:choose>
-
-						</xsl:for-each>
-					</li>
-				</ul>
-
-
-				<ul >
-					<li >
-						<xsl:for-each select="Platillos/Tipo[@Nombre = 'Bebidas']/Platillo">
-							<xsl:choose>
-								<xsl:when test="@Orden = 1">
-									<div class="tab-content">
-										<div class="tab-pane active show" id="tab-1">
-											<div class="row">
-												<div class="col-lg-8 details order-2 order-lg-1">
-													<h3>
-														<xsl:value-of select="@Nombre"></xsl:value-of>
-													</h3>
-													<h3>
-														<xsl:value-of select="Descripcion"></xsl:value-of>
-													</h3>
-													<h3>
-														<xsl:value-of select="Precio"></xsl:value-of>
-													</h3>
-												</div>
-												<div class="col-lg-4 text-center order-1 order-lg-2">
-													<img src="{Imagen}" alt="" class="img-fluid"></img>
-												</div>
-											</div>
-										</div>
-									</div>
+							<li>
+								<xsl:choose>
+									<xsl:when test="@Orden = 1">
+										<a href="#tab-{@Orden}" class="nav-link active show" data-bs-toggle="tab" style="color: #F99">
+											<xsl:value-of select="@Nombre"></xsl:value-of>
+										</a>
 									</xsl:when>
-								<xsl:otherwise>
-									<div class="tab-content">
-										<div class="tab-pane show" id="tab-1">
-											<div class="row">
-												<div class="col-lg-8 details order-2 order-lg-1">
-													<h3>
-														<xsl:value-of select="@Nombre"></xsl:value-of>
-													</h3>
-													<h3>
-														<xsl:value-of select="Descripcion"></xsl:value-of>
-													</h3>
-													<h3>
-														<xsl:value-of select="Precio"></xsl:value-of>
-													</h3>
-												</div>
-												<div class="col-lg-4 text-center order-1 order-lg-2">
-													<img src="{Imagen}" alt="" class="img-fluid"></img>
-												</div>
-											</div>
+									<xsl:otherwise>
+										<a href="#tab-{@Orden}" class="nav-link show" data-bs-toggle="tab" style="color: #CCC">
+											<xsl:value-of select="@Nombre"></xsl:value-of>
+										</a>
+									</xsl:otherwise>
+								</xsl:choose>
+							</li>
+						</xsl:for-each>
+				</ul>
+
+				<br></br>
+				
+				<xsl:for-each select="Platillos/Tipo[@Nombre = 'Bebidas']/Platillo">
+					<xsl:choose>
+						<xsl:when test="@Orden = 1">
+							<div class="tab-content">
+								<div class="tab-pane active show" id="tab-{@Orden}">
+									<div class="row">
+										<div class="col-lg-8 details order-2 order-lg-1">
+											<a style="color: #F99; font-size: 30px">
+												<xsl:value-of select="@Nombre"></xsl:value-of>
+											</a>
+											<br></br>
+											<a style="color:white; font-size: 20px">
+												<xsl:value-of select="Descripcion"></xsl:value-of>
+											</a >
+											<br></br>
+											<a style="color:white; font-size: 18px">
+												<xsl:value-of select="Precio"></xsl:value-of>
+											</a>
+										</div>
+										<br></br>
+										<div class="col-lg-4 text-center order-1 order-lg-2">
+											<img src="{Imagen}" alt="Imagen relativa" class="img-fluid" ></img>
 										</div>
 									</div>
-								</xsl:otherwise>
-							</xsl:choose>
+								</div>
+							</div>
+							</xsl:when>
+						<xsl:otherwise>
+							<div class="tab-content">
+								<div class="tab-pane show" id="tab-{@Orden}">
+									<div class="row">
+										<div class="col-lg-8 details order-2 order-lg-1">
+											<a style="color: #F99; font-size: 30px">
+												<xsl:value-of select="@Nombre"></xsl:value-of>
+											</a>
+											<br></br>
+											<a style="color:white; font-size: 20px">
+												<xsl:value-of select="Descripcion"></xsl:value-of>
+											</a>
+											<br></br>
+											<a style="color:white; font-size: 18px">
+												<xsl:value-of select="Precio"></xsl:value-of>
+											</a>
+										</div>
+										<br></br>
+										<div class="col-lg-4 text-center order-1 order-lg-2">
+											<img src="{Imagen}" alt="Imagen relativa" class="img-fluid"></img>
+										</div>
+									</div>
+								</div>
+							</div>
+						</xsl:otherwise>
+					</xsl:choose>
 
-						</xsl:for-each>
-					</li>
-				</ul>
+				</xsl:for-each>
+					
 
 
 
@@ -426,50 +428,56 @@
 			</div>
 
 			<!--Platillos exepto bebidas-->
-			<xsl:for-each select="Platillos/Tipo">
-				<ul>
-					<li data.filter=".filter-{@Nombre}"></li>
-					<div align="center">
+			
+			<ul id="menu-filters">
+				<li data.filter="#" class="filter-active"></li>
+				<div align="center">
+						<xsl:for-each select="Platillos/Tipo">
 						<li data.filter=".filter-{@Nombre}">
 							<h2>
 								<xsl:value-of select="@Nombre"></xsl:value-of>
 							</h2>
 						</li>
-					</div>
-				</ul>
+					</xsl:for-each>
+				</div>
+			</ul>
 
-			</xsl:for-each>
 
-			<xsl:for-each select="Platillos/Tipo/Platillo">
-				<div class="filter-{@Nombre}">
-					<div class="tab-content">
-						<div class="tab-pane show filter{../@Nombre}" id="tab-1">
-							<div class="row">
-								<div class="col-lg-8 details order-2 order-lg-1">
-									<h3>
-										<xsl:value-of select="@Nombre"></xsl:value-of>
-									</h3>
-									<p>
-										<xsl:value-of select="Descripcion"></xsl:value-of>
-									</p>
-									<p>
-										<xsl:value-of select="Precio"></xsl:value-of>
-									</p>
-								</div>
-								<div class="col-lg-4 text-center order-1 order-lg-2">
-									<img src="{Imagen}" alt="" class="img-fluid" width="100"></img>
+			<div class="row menu-container" data="fade-up" data-aos-delay="200">
+				<xsl:for-each select="Platillos/Tipo/Platillo">
+					<div class="col-lg-6 menu-item filter-{../@Nombre}">
+						<div class="tab-content">
+							<div class="tab-pane show filter{../@Nombre}" id="tab-1">
+								<div class="row">
+									<div class="col-lg-8 details order-2 order-lg-1">
+										<a href="#">
+											<xsl:value-of select="@Nombre"></xsl:value-of>
+										</a>
+										<a href="#">
+											<xsl:value-of select="Descripcion"></xsl:value-of>
+										</a>
+										<a href="#">
+											<xsl:value-of select="Precio"></xsl:value-of>
+										</a>
+									</div>
+									<div class="col-lg-4 text-center order-1 order-lg-2">
+										<img src="{Imagen}" alt="" class="img-fluid"></img>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</xsl:for-each>
-			
+				</xsl:for-each>
+			</div>		
 		</div>
 
 	</xsl:template>
 
 	<xsl:template name="Contacto">
+
+		<!--<script src="assets/js/miScript.js" type="text/javascript"> </script>-->
+
+		
 		<section id="contact" class="contact">
 			<div data-aos="fade-up">
 				<style>
@@ -539,22 +547,22 @@
 						<form action="#" method="post" role="form" class="php-email-form">
 							<div class="row">
 								<div class="col-md-6 form-group">
-									<input type="text" name="contact_name" class="form-control" id="contact-name" placeholder="Ingresa tu nombre" required="true"></input>
+									<input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Ingresa tu nombre" required="true"></input>
 								</div>
 								<div class="col-md-6 form-group">
-									<input type="email" name="Email" class="form-control" id="contact-email" placeholder="Ingresa tu correo" required="true"></input>
+									<input type="email" name="Email" class="form-control" id="contact_email" placeholder="Ingresa tu correo" required="true"></input>
 								</div>
 								<div class="col-md-6 form-group">
-									<input type="number" name="contact_people" class="form-control" id="contact-people" max="4" min="0"  placeholder="Numero de personas" required="true"></input>
+									<input type="number" name="contact_people" class="form-control" id="contact_people" max="8" min="0" placeholder="Numero de personas" required="true"></input>
 								</div>
 								<div class="col-md-6 form-group">
-									<input type="number" name="contact_add" class="form-control" id="contact-add" max="4" min="0" placeholder="Numero de personas adicionales" required="true"></input>
+									<input type="number" name="contact_add" class="form-control" id="contact_add" max="4" min="0" placeholder="Numero de personas adicionales" required="true"></input>
 								</div>
 								<div class="col-md-6 form-group">
-									<input type="date" name="contact_fecha" class="form-control" id="contact-fecha"  required="true"></input>
+									<input type="date" name="contact_fecha" class="form-control" id="contact_fecha"  required="true"></input>
 								</div>
 								<div class="col-md-6 form-group">
-									<input type="time" name="contact_hora" class="form-control" id="contact-hora" required="true" max="10:00:00" min="08:00:00"></input>
+									<input type="time" name="contact_hora" class="form-control" id="contact_hora" required="true" max="19:00:00" min="08:00:00"></input>
 								</div>
 							</div>
 
@@ -565,13 +573,19 @@
 							</div>
 
 							<div class="text-center">
-								<a class="book-a-table-btn" id="miBoton" onclick="enviar_formulario()" >Presionar</a>
+								<a id="miBoton" onclick="enviar_formulario()" >Presionar</a>
 							</div>
 						</form>
+						<form>
+					<a id="miBoton2" onclick="llego()" >Presionar</a></form>
 					</div>
 				</div>
-			</div>
+			</div>	
+		
 		</section>
+
+		
+		
 		<script>
 			$(document).ready(function(){
 				console.log("Hola desde JQuery");
@@ -584,6 +598,30 @@
 				console.log("La hora actual es: " + horas + ":" + minutos);
 				console.log("La hora es: "+ horas);
 				console.log("Los minutos es: "+ minutos);
+				
+				if(horas<![CDATA[<]]>10){
+					horas="0"+horas;
+				}
+				if(minutos<![CDATA[<]]>10){
+					minutos="0"+minutos;
+				}
+				
+				var formated=horas+":"+minutos;
+				
+				$('#contact_hora').attr('value',formated);
+				
+				
+				var dia=now.getData();
+				var mes=now.getMonth();
+				var anio=now.getFullYear();
+				
+				mes = mes <![CDATA[>]]> 10 ? "0" + mes : mes;
+				dia = dia <![CDATA[>]]> 10 ? "0" + dia : dia;
+				
+				var fechaFormated = anio + "-" + mes + "-" + dia;
+				
+				$('#contact_fecha').attr('value',fechaFormated);
+			
 			});
 			
 			<!--rFecha del servido-->
@@ -593,6 +631,7 @@
 		</script>
 	</xsl:template>
 
+	
 	<xsl:template name="PlayRoom">
 		<h1>PlayRoom</h1>
 	</xsl:template>
