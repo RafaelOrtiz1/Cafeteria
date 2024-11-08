@@ -36,10 +36,10 @@
 				<link rel="stylesheet" href="assets/css/owl.css"></link>
 				<link rel="stylesheet" href="assets/css/animate.css"></link>
 				<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-				
+
 				<script type="text/javascript" src="assets/js/jquery-1.11.2.min.js"></script>
 				<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-		<!--
+				<!--
 		
 
     TemplateMo 579 Cyborg Gaming
@@ -289,10 +289,10 @@
 								</div>
 							</ul>
 							<br></br>
-							<div class="col-lg-3 col-sm-6">
-								<h4>
+							<div class="col-lg-10 col-sm-6">
+								<h6>
 									<xsl:value-of select="TextoEspecial"></xsl:value-of>
-								</h4>
+								</h6>
 							</div>
 							<br></br>
 							<div class="col-lg-3 col-sm-6">
@@ -331,26 +331,26 @@
 				</div>
 
 				<ul class="nav" >
-						<xsl:for-each select="Platillos/Tipo[@Nombre = 'Bebidas']/Platillo">
-							<li>
-								<xsl:choose>
-									<xsl:when test="@Orden = 1">
-										<a href="#tab-{@Orden}" class="nav-link active show" data-bs-toggle="tab" style="color: #F99">
-											<xsl:value-of select="@Nombre"></xsl:value-of>
-										</a>
-									</xsl:when>
-									<xsl:otherwise>
-										<a href="#tab-{@Orden}" class="nav-link show" data-bs-toggle="tab" style="color: #CCC">
-											<xsl:value-of select="@Nombre"></xsl:value-of>
-										</a>
-									</xsl:otherwise>
-								</xsl:choose>
-							</li>
-						</xsl:for-each>
+					<xsl:for-each select="Platillos/Tipo[@Nombre = 'Bebidas']/Platillo">
+						<li>
+							<xsl:choose>
+								<xsl:when test="@Orden = 1">
+									<a href="#tab-{@Orden}" class="nav-link active show" data-bs-toggle="tab" style="color: #F99">
+										<xsl:value-of select="@Nombre"></xsl:value-of>
+									</a>
+								</xsl:when>
+								<xsl:otherwise>
+									<a href="#tab-{@Orden}" class="nav-link show" data-bs-toggle="tab" style="color: #CCC">
+										<xsl:value-of select="@Nombre"></xsl:value-of>
+									</a>
+								</xsl:otherwise>
+							</xsl:choose>
+						</li>
+					</xsl:for-each>
 				</ul>
 
 				<br></br>
-				
+
 				<xsl:for-each select="Platillos/Tipo[@Nombre = 'Bebidas']/Platillo">
 					<xsl:choose>
 						<xsl:when test="@Orden = 1">
@@ -377,7 +377,7 @@
 									</div>
 								</div>
 							</div>
-							</xsl:when>
+						</xsl:when>
 						<xsl:otherwise>
 							<div class="tab-content">
 								<div class="tab-pane show" id="tab-{@Orden}">
@@ -406,7 +406,7 @@
 					</xsl:choose>
 
 				</xsl:for-each>
-					
+
 
 
 
@@ -428,11 +428,11 @@
 			</div>
 
 			<!--Platillos exepto bebidas-->
-			
+
 			<ul id="menu-filters">
 				<li data.filter="#" class="filter-active"></li>
 				<div align="center">
-						<xsl:for-each select="Platillos/Tipo">
+					<xsl:for-each select="Platillos/Tipo">
 						<li data.filter=".filter-{@Nombre}">
 							<h2>
 								<xsl:value-of select="@Nombre"></xsl:value-of>
@@ -468,7 +468,7 @@
 						</div>
 					</div>
 				</xsl:for-each>
-			</div>		
+			</div>
 		</div>
 
 	</xsl:template>
@@ -476,8 +476,8 @@
 	<xsl:template name="Contacto">
 
 		<script src="assets/js/miScript.js" type="text/javascript"> </script>
-		
-				<!--API de Google-->
+
+		<!--API de Google-->
 
 		<script>
 			// Definir la función initMap globalmente
@@ -505,7 +505,7 @@
 				async="" defer=""></script>
 
 		<script type="module" src="assets/js/Google.js"></script>
-		
+
 		<section id="contact" class="contact">
 			<div data-aos="fade-up">
 				<style>
@@ -532,47 +532,47 @@
 							<div class="info">
 								<div class="address">
 									<i class="bi bi-geo.alt"></i>
-									<h4>Direccion</h4>
-									<h5>
+									<h5>Direccion</h5>
+									<h4>
 										<xsl:value-of select="Datos/Direccion"></xsl:value-of>
-									</h5>
+									</h4>
 								</div>
 								<br></br>
 								<div class="open-hours">
 									<i class="bi bi-geo.alt"></i>
-									<h4>Horario</h4>
-									<h5>
+									<h5>Horario</h5>
+									<h4>
 										<xsl:for-each select="Datos/Horarios/Horario">
 											<div>
 												<xsl:value-of select="."></xsl:value-of>
-											</div>	
+											</div>
 										</xsl:for-each>
-										
-									</h5>
+
+									</h4>
 								</div>
 								<br></br>
 								<div class="email">
 									<i class="bi bi-geo.alt"></i>
-									<h4>Correo</h4>
-									<h5>
+									<h5>Correo</h5>
+									<h4>
 										<xsl:value-of select="Datos/correo"></xsl:value-of>
-									</h5>
+									</h4>
 								</div>
 								<br></br>
 								<div class="phone">
 									<i class="bi bi-geo.alt"></i>
-									<h4>Telefono</h4>
-									<h5>
+									<h5>Telefono</h5>
+									<h4>
 										<xsl:value-of select="Datos/Telefono"></xsl:value-of>
-									</h5>
+									</h4>
 								</div>
 							</div>
 						</div>
-						
 					</div>
+					<br></br>
 					<!--Formulario-->
 					<div class="col-lg-8 mt-5 mt-lg-0">
-						<form action="#" method="post" role="form" class="php-email-form">
+						<form action="#" method="post" role="form" class="php-email-form" id="formulario">
 							<div class="row">
 								<div class="col-md-6 form-group">
 									<input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Ingresa tu nombre" required="true"></input>
@@ -580,90 +580,89 @@
 								<div class="col-md-6 form-group">
 									<input type="email" name="Email" class="form-control" id="contact_email" placeholder="Ingresa tu correo" required="true"></input>
 								</div>
+								<br></br><br></br>
 								<div class="col-md-6 form-group">
 									<input type="number" name="contact_people" class="form-control" id="contact_people" onkeyup="suma()" max="8" min="0" placeholder="Numero de personas" required="true"></input>
 								</div>
 								<div class="col-md-6 form-group">
 									<input type="number" name="contact_add" class="form-control" id="contact_add" onkeyup="suma()" max="4" min="0" placeholder="Numero de personas adicionales" required="true"></input>
 								</div>
-								<div class="col-md-6 form-group">
-									<input type="number" name="contact_suma" class="form-control" id="contact_suma" max="12" min="0" placeholder="Numero total de personas" ></input>
+								<br></br>
+								<br></br>
+								<div class="col-md-6 form-group mt-3 mt-md-0">
+									<output type="number" name="contact_suma" style="height: 39px;" class="form-control" id="contact_suma" max="12" min="0" placeholder="Numero total de personas" disable="true" required="true"></output>
 								</div>
 								<div class="col-md-6 form-group">
 									<input type="date" name="contact_fecha" class="form-control" id="contact_fecha"  required="true"></input>
 								</div>
+								<br></br>
+								<br></br>
 								<div class="col-md-6 form-group">
-									<input type="time" name="contact_hora" class="form-control" id="contact_hora" required="true" max="19:00:00" min="08:00:00"></input>
+									<input type="time" name="contact_hora" class="form-control" id="contact_hora" required="true"></input>
 								</div>
 							</div>
-
-							<div class="row">
-								<div class="col-md-6 form-group mt-3 mt-md-0">
-									<output id="total" class="form-control" disable="true"></output>
-								</div>
-							</div>
-
+							<br></br>
 							<div class="text-center">
-								<a id="miBoton" onclick="enviar_formulario()" >Presionar</a>
+								<a class="btn btn-success" id="miBoton" onclick="enviar_formulario()" >Presionar</a>
 							</div>
+							<br></br>
 						</form>
 					</div>
 				</div>
-			</div>	
-		
+			</div>
+
 		</section>
 
-		
-		
+
+
 		<script>
 			$(document).ready(function(){
-				console.log("Hola desde JQuery");
-				var now = new Date(Date.now());
-				var timecontrol = document.getElementById("contexat_hora");
-				var horas = now.getHours();
-				var minutos = now.getMinutes();
-			
-				console.log("La fecha es: "+ now);
-				console.log("La hora actual es: " + horas + ":" + minutos);
-				console.log("La hora es: "+ horas);
-				console.log("Los minutos es: "+ minutos);
-				
-				if(horas<![CDATA[<]]>10){
-					horas="0"+horas;
-				}
-				if(minutos<![CDATA[<]]>10){
-					minutos="0"+minutos;
-				}
-				
-				var formated=horas+":"+minutos;
-				
-				$('#contact_hora').attr('value',formated);
-				
-				
-				var dia=now.getData();
-				var mes=now.getMonth();
-				var anio=now.getFullYear();
-				
-				mes = mes <![CDATA[>]]> 10 ? "0" + mes : mes;
-				dia = dia <![CDATA[>]]> 10 ? "0" + dia : dia;
-				
-				var fechaFormated = anio + "-" + mes + "-" + dia;
-				
-				$('#contact_fecha').attr('value',fechaFormated);
-			
+			console.log("Hola desde JQuery");
+			var now = new Date(Date.now());
+			var timecontrol = document.getElementById("contexat_hora");
+			var horas = now.getHours();
+			var minutos = now.getMinutes();
+
+			console.log("La fecha es: "+ now);
+			console.log("La hora actual es: " + horas + ":" + minutos);
+			console.log("La hora es: "+ horas);
+			console.log("Los minutos es: "+ minutos);
+
+			if(horas<![CDATA[<]]>10){
+			horas="0"+horas;
+			}
+			if(minutos<![CDATA[<]]>10){
+			minutos="0"+minutos;
+			}
+
+			var formated=horas+":"+minutos;
+
+			$('#contact_hora').attr('value',formated);
+
+
+			var dia=now.getData();
+			var mes=now.getMonth();
+			var anio=now.getFullYear();
+
+			mes = mes <![CDATA[>]]> 10 ? "0" + mes : mes;
+			dia = dia <![CDATA[>]]> 10 ? "0" + dia : dia;
+
+			var fechaFormated = anio + "-" + mes + "-" + dia;
+
+			$('#contact_fecha').attr('value',fechaFormated);
+
 			});
-			
+
 			<!--rFecha del servido-->
-			
-			
-		
+
+
+
 		</script>
 	</xsl:template>
 
-	
+
 	<xsl:template name="PlayRoom">
 		<h1>PlayRoom</h1>
 	</xsl:template>
 
 </xsl:stylesheet>
-

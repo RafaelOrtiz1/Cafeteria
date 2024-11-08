@@ -9,8 +9,6 @@ console.log("si llego a java");
 //	});
 
 //}
-var input = document.getElementById("contact_suma");
-input.disabled = true;
 
 var fechaFormated;
 var formated;
@@ -52,6 +50,7 @@ $(document).ready(function () {
 	$('#contact_fecha').attr('value', fechaFormated);
 
 });
+
 
 function enviar_formulario() {
 
@@ -98,7 +97,18 @@ function enviar_formulario() {
 		Swal.fire({
 			position: "center",
 			icon: "warning",
-			title: "La fecha que seleccionaste ya ha pasado",
+			title: "La fecha que intentas seleccionar ya ha pasado",
+			showConfirmButton: false,
+			timer: 1500
+		});
+	}
+
+	if (hora_seleccionada < formated) {
+		//succcess
+		Swal.fire({
+			position: "center",
+			icon: "warning",
+			title: "La hora que intentas seleccionar ya ha pasado",
 			showConfirmButton: false,
 			timer: 1500
 		});
@@ -129,24 +139,32 @@ function enviar_formulario() {
 	}
 
 	if (fechaFormated == fecha_seleccionada) {
-		if (hora_seleccionada >= formated + 2 || medio_dia) {
-			if (hora_seleccionada >= "08:00" && hora_seleccionada < "19:00") {
-				fecha = true;
-				hora = true;
-			} else {
-				Swal.fire({
-					title: "No puede realizarce el registro",
-					text: "Solo se puede reservar en horario de 8 a.m - 7:00 p.m",
-					icon: "error"
-				});
-			}	
-		} else {
-			//No puede realizarce la reservacion
+		if (formated >= "19:00") {
 			Swal.fire({
 				title: "No puede realizarce el registro",
-				text: "tiene que crearce con minimo 2 horas de anticipacion",
+				text: "Lo sentimos, por hoy el servicio ya no esta disponible puedes agendar a partir de mañana en un horario de 8 a.m - 7:00 p.m",
 				icon: "error"
 			});
+		} else {
+			if (hora_seleccionada >= formated + 2 || medio_dia) {
+				if (hora_seleccionada >= "08:00" && hora_seleccionada < "19:00") {
+					fecha = true;
+					hora = true;
+				} else {
+					Swal.fire({
+						title: "No puede realizarce el registro",
+						text: "Solo se puede reservar en horario de 8 a.m - 7:00 p.m",
+						icon: "error"
+					});
+				}
+			} else {
+				//No puede realizarce la reservacion
+				Swal.fire({
+					title: "No puede realizarce el registro",
+					text: "tiene que crearce con minimo 2 horas de anticipacion",
+					icon: "error"
+				});
+			}
 		}
 	}
 
