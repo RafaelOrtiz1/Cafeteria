@@ -475,8 +475,36 @@
 
 	<xsl:template name="Contacto">
 
-		<!--<script src="assets/js/miScript.js" type="text/javascript"> </script>-->
+		<script src="assets/js/miScript.js" type="text/javascript"> </script>
+		
+				<!--API de Google-->
 
+		<script>
+			// Definir la función initMap globalmente
+			function initMap() {
+			// Asegúrate de que aquí inicializas el mapa correctamente
+			const mapOptions = {
+			center: { lat: -34.397, lng: 150.644 },  // Cambia estas coordenadas por las deseadas
+			zoom: 8
+			};
+			const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+			}
+		</script>
+
+		<script>
+			<![CDATA[
+			(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+			key: "AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs",
+			// Add other bootstrap parameters as needed, using camel case.
+			// Use the 'v' parameter to indicate the version to load (alpha, beta, weekly, etc.)
+			});]]>
+		</script>
+
+		<!--Referencia a mi archivo JS-->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs&amp;callback=initMap"
+				async="" defer=""></script>
+
+		<script type="module" src="assets/js/Google.js"></script>
 		
 		<section id="contact" class="contact">
 			<div data-aos="fade-up">
@@ -484,7 +512,7 @@
 					#map{
 					border:0;
 					width:100%;
-					height: 350px;
+					height: 400px;
 					}
 
 					#container2{
@@ -494,8 +522,8 @@
 				<div id="googlw-map">
 					<div id="map"></div>
 				</div>
-				<text id="direccion">Ubicacion</text>
-				<div class="col-lg12 margin-bottom-30" id="street"></div>
+				<a id="direccion" style="color:#CCC;" >Ubicacion actual</a>
+				<div id="street" style="height: 400px; width: 100%;"></div>
 
 				<div class="container2" data-aos="fade-up">
 					<div class="row mt-5">
@@ -553,10 +581,13 @@
 									<input type="email" name="Email" class="form-control" id="contact_email" placeholder="Ingresa tu correo" required="true"></input>
 								</div>
 								<div class="col-md-6 form-group">
-									<input type="number" name="contact_people" class="form-control" id="contact_people" max="8" min="0" placeholder="Numero de personas" required="true"></input>
+									<input type="number" name="contact_people" class="form-control" id="contact_people" onkeyup="suma()" max="8" min="0" placeholder="Numero de personas" required="true"></input>
 								</div>
 								<div class="col-md-6 form-group">
-									<input type="number" name="contact_add" class="form-control" id="contact_add" max="4" min="0" placeholder="Numero de personas adicionales" required="true"></input>
+									<input type="number" name="contact_add" class="form-control" id="contact_add" onkeyup="suma()" max="4" min="0" placeholder="Numero de personas adicionales" required="true"></input>
+								</div>
+								<div class="col-md-6 form-group">
+									<input type="number" name="contact_suma" class="form-control" id="contact_suma" max="12" min="0" placeholder="Numero total de personas" ></input>
 								</div>
 								<div class="col-md-6 form-group">
 									<input type="date" name="contact_fecha" class="form-control" id="contact_fecha"  required="true"></input>
@@ -576,8 +607,6 @@
 								<a id="miBoton" onclick="enviar_formulario()" >Presionar</a>
 							</div>
 						</form>
-						<form>
-					<a id="miBoton2" onclick="llego()" >Presionar</a></form>
 					</div>
 				</div>
 			</div>	
