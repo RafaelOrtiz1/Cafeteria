@@ -653,7 +653,7 @@
 
 			});
 
-			<!--rFecha del servido-->
+			<!--Fecha del servido-->
 
 
 
@@ -662,7 +662,53 @@
 
 
 	<xsl:template name="PlayRoom">
-		<h1>PlayRoom</h1>
+		<link href="assets/css/DragandDrop.css" rel="stylesheet"> </link>
+		<script src="assets/js/DragandDrop.js" type="text/javascript"> </script>
+
+		<div class="container">
+			<!--Audio-->
+			<section class="tm-section-row p-5">
+				<br></br>
+				<br></br>
+				<h2>Audio</h2>
+				<div id="Audio" style="width:100%">
+					<img src="assets/gallery-1.jpg" width="100%"></img>
+					<audio controls="true" style="width:100%" autoplay="autoplay">
+						<source src="assets/audio.mp3"></source>
+					</audio>
+				</div>	
+			</section>
+			<!--video-->
+			<section class="tm-section-row p-5">
+				<h2>Video</h2>
+				<div id="Video" style="width:100%">
+					<video controls="true" width="100%">
+						<source src="assets/GoProHW.mp4"></source>
+					</video>
+				</div>
+			</section>
+			<section class="tm-section-row p-5">
+				<h2 class="col-lg-12 mb-3"><![CDATA[Drag & Drop]]></h2>
+				<!--Cuadro1-->
+				<div id="cuadro1" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)" >
+					<!--Cuadradito1-->
+					<div class="cuadradito" id="arrastable1" draggable="true" ondragstart="start(event)" ondragen="end(event)"></div>
+					<!--Cuadradito2-->
+					<div class="cuadradito" id="arrastable2" draggable="true" ondragstart="start(event)" ondragen="end(event)"></div>
+					<!--Cuadradito3-->
+					<div class="cuadradito" id="arrastable3" draggable="true" ondragstart="start(event)" ondragen="end(event)"></div>
+				</div>
+				<!--Cuadro2-->
+				<div id="cuadro2" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ></div>
+				<!--Cuadro3-->
+				<div id="cuadro3" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return clone(event)" ></div>
+				<!--Cuadro4 (papelera)-->
+				<div id="papelera" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return remove(event)" ></div>
+				<br></br>
+				<br></br>
+				<br></br>
+			</section>
+		</div>
 	</xsl:template>
 
 </xsl:stylesheet>

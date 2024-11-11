@@ -40,7 +40,7 @@ $(document).ready(function () {
 	var mes = now.getMonth() + 1;
 	var anio = now.getFullYear();
 
-	mes = mes  < 10 ? "0" + mes : mes;
+	mes = mes < 10 ? "0" + mes : mes;
 	dia = dia < 10 ? "0" + dia : dia;
 
 	fechaFormated = anio + "-" + mes + "-" + dia;
@@ -59,13 +59,13 @@ function enviar_formulario() {
 	var fechaObjeto = new Date(fecha_seleccionada.value);
 
 	var dia = fechaObjeto.getDate() + 1;
-	var mes = fechaObjeto.getMonth() + 1 ;
+	var mes = fechaObjeto.getMonth() + 1;
 	var anio = fechaObjeto.getFullYear();
 
 	mes = mes < 10 ? "0" + mes : mes;
 	dia = dia < 10 ? "0" + dia : dia;
 
-	fecha_seleccionada = anio + "-" + mes + "-" + dia; 
+	fecha_seleccionada = anio + "-" + mes + "-" + dia;
 
 	var hora_seleccionada = document.getElementById('contact_hora').value;
 
@@ -126,7 +126,7 @@ function enviar_formulario() {
 						icon: "error"
 					});
 				}
-			}else {
+			} else {
 				medio_dia = false;
 				//No puede realizarce antes de las 2
 				Swal.fire({

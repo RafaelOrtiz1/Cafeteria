@@ -54,7 +54,7 @@
 			<Platillo Nombre="Enchiladas Suizas" Orden="3">
 				<Descripcion><![CDATA[ 3 enchiladas en salsa verde]]></Descripcion>
 				<Precio>
-					$35
+						$35
 				</Precio>
 				<Imagen>assets/img/Enchiladas_Suizas.jpg</Imagen>
 			</Platillo>
